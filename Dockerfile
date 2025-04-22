@@ -9,6 +9,7 @@ RUN apk add wget unzip
 RUN wget https://github.com/badaix/snapweb/releases/download/v0.8.0/snapweb.zip -O /usr/share/snapserver/snapweb/snapweb.zip
 RUN unzip -o /usr/share/snapserver/snapweb/snapweb.zip -d /usr/share/snapserver/snapweb/ && rm /usr/share/snapserver/snapweb/snapweb.zip
 
+COPY /snapserver.conf /etc/snapserver.conf
 CMD ["snapserver"]
 
 EXPOSE 1704 1780
