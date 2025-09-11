@@ -1,7 +1,7 @@
 FROM alpine:edge
 
-ARG LIBRESPOT_VERSION=0.6.0-r0
-ARG SNAPCAST_VERSION=0.31.0-r0
+ARG LIBRESPOT_VERSION=0.7.1-r0
+ARG SNAPCAST_VERSION=0.32.3-r0
 
 RUN apk upgrade
 RUN apk add --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing --no-cache bash snapcast-server=${SNAPCAST_VERSION} librespot=${LIBRESPOT_VERSION} sed
