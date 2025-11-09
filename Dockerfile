@@ -1,14 +1,15 @@
 FROM alpine:edge
 
 RUN apk upgrade
+
 # install librespot dependencies and build tools
-RUN apk add --no-cache git
+RUN apk add --no-cache git rust cargo build-base openssl-dev alsa-lib-dev
 RUN git clone https://github.com/librespot-org/librespot /opt/librespot
-RUN apk add rust cargo build-base openssl-dev alsa-lib-dev
-RUN cd /opt/librespot && cargo build --release
+RUN cd /opt/librespot && cargo build --release && cd /
 
 # get snapcast from edge/testing to have up to date version
 RUN apk add --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing --no-cache snapcast-server
+
 # download and install snapweb
 RUN apk add wget unzip
 RUN wget https://github.com/badaix/snapweb/releases/download/v0.8.0/snapweb.zip -O /usr/share/snapserver/snapweb/snapweb.zip
